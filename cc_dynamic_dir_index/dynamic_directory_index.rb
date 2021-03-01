@@ -5,8 +5,14 @@ require "sinatra/reloader"
 require "tilt/erubis"
 
 get "/" do
+  sort = params[:sort]
   @title = "Files"
-  @contents = Dir.glob("public/*")
+
+  if sort == "a" || sort.nil?
+    @contents = Dir.glob("public/*").sort
+  elsif sort == "z"
+    @contents = Dir.glob("public/*").sort.reverse
+  end
 
   erb :home
 end

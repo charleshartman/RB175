@@ -11,14 +11,19 @@
 <body>
   <div id="main">
     <div class="header">
-      <h1>Files</h1>
-      <h2>listing in /public</h2>
+      <h1>/public</h1>
     </div>
 
     <div class="content">
-      <% @contents.each do |chapter| %> 
-        <a href="#"><%= chapter %></a>  
+      <% @contents.each do |chapter| %>
+        <p><a href="<%= File.basename(chapter) %>"><%= File.basename(chapter) %></a></p>
       <% end %>
+    </div>
+
+    <div class="sort">
+      <br>
+      <a href="?sort=a">Sort Ascending</a> <a href="?sort=z">Sort Descending</a>
+      <br>
     </div>
   </div>
 </body>
