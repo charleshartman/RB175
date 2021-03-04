@@ -1,0 +1,5 @@
+<h3><%= @title %></h3>
+
+<% @users.each_key do |key| %>
+  <a href="/users/<%= key %>"><p><%= key %></p></a>
+<% end %>
