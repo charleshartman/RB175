@@ -1,5 +1,6 @@
 # dynamic_directory_index.rb
 
+require "bundler/setup"
 require "sinatra"
 require "sinatra/reloader"
 require "tilt/erubis"
