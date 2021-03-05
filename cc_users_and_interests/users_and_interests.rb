@@ -15,23 +15,35 @@ before do
   @users = YAML.load_file("users.yaml")
 end
 
+helpers do
+  def count_interests
+    @user_count = 0
+    @interest_count = 0
+    @users.each_value do |value|
+      @user_count += 1
+      @interest_count += value[:interests].count
+    end
+  end
+end
+
 get "/" do
-  redirect "/users" unless params[:name]
+  redirect "/users"
 end
 
 get "/users" do
   @title = "Users"
-  erb :users unless params[:name]
-
-  erb :name
+  erb :users
 end
 
-get "/users/:name" do
-  @name = params[:name]
+get "/:user_name" do
+  @user_name = params[:user_name].to_sym
+  @title = @user_name
+  @email = @users[@user_name][:email]
+  @interests = @users[@user_name][:interests]
 
-  erb :name
+  erb :user
 end
 
-# not_found do
-#   redirect "/"
-# end
+not_found do
+  redirect "/"
+end

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title><%= @title %></title>
+
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+
+  </head>
+
+  <body>
+    <div id="layout">
+      <div id="main">
+
+        <div class="header">
+          <h1><a href="/">Users & Interests</a></h1>
+          <h2>A Launch School Coding Challenge</h2>
+          <br>
+        </div>
+
+        <div class="content">
+          <%= yield %>
+        </div>
+
+        <div class="footer">
+          <% count_interests %>
+          <br>
+          <p>There are <%= @user_count %> users with a total of 
+            <%= @interest_count %> interests.</p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<p>Details for <strong><%= @user_name %></strong>:</p>
+<p>Email address: <strong><%= @email %></strong></p>
+<p>Interests: <strong><%= @interests.join(', ') %></strong></p>
+
+<% @users.keys.each do |key| %>
+  <% unless key == @user_name %>
+    <a href="/<%= key %>"><p><%= key %></p></a>
+  <% end %>
+<% end %>
