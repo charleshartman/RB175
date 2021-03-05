@@ -16,12 +16,20 @@ before do
 end
 
 get "/" do
-  redirect "/users"
+  redirect "/users" unless params[:name]
 end
 
 get "/users" do
   @title = "Users"
-  erb :users
+  erb :users unless params[:name]
+
+  erb :name
+end
+
+get "/users/:name" do
+  @name = params[:name]
+
+  erb :name
 end
 
 # not_found do
